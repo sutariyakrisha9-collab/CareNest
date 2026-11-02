@@ -2,11 +2,24 @@
 const multer = require("multer");
 const path = require("path");
 const crypto = require("crypto");
+const fs = require("fs");
+
+// Create upload directory automatically
+const uploadPath = path.join(
+    __dirname,
+    "..",
+    "uploads",
+    "medical-records"
+);
+
+if (!fs.existsSync(uploadPath)) {
+    fs.mkdirSync(uploadPath, { recursive: true });
+}
 
 const storage = multer.diskStorage({
 
     destination: (req, file, cb) => {
-        cb(null, "uploads/medical-records/");
+        cb(null, uploadPath);
     },
 
     filename: (req, file, cb) => {
