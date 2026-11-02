@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareNest | Doctor Dashboard</title>
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Doctor Dashboard CSS -->
+    <link rel="stylesheet" href="css/doctor-dashboard.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ==================================
+         NAVBAR
+    ================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                <i class="fas fa-heartbeat"></i>
+                CareNest<span>.</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#dashboardSection" class="active">Dashboard</a>
+                <a href="#appointmentsSection">My Appointments</a>
+                <a href="#profileSection">My Profile</a>
+            </nav>
+
+            <div class="nav-buttons">
+
+                <span id="doctorName">Doctor</span>
+
+                <button id="logoutBtn" class="login-btn" type="button">
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================
+         MAIN DASHBOARD
+    ================================== -->
+
+    <main class="doctor-dashboard">
+
+        <!-- Welcome Section -->
+
+        <section class="doctor-welcome" id="dashboardSection">
+
+            <p>DOCTOR PORTAL</p>
+
+            <h1>
+                Welcome, <span id="welcomeDoctorName">Doctor</span>!
+            </h1>
+
+            <p>
+                Manage your appointments and patient information.
+            </p>
+
+        </section>
+
+
+        <!-- Dashboard Cards -->
+
+        <section class="doctor-stats">
+
+            <h2>My Dashboard</h2>
+
+            <div class="doctor-stats-container">
+
+                <!-- Appointments Card -->
+
+                <div class="doctor-stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+
+                    <h3>My Appointments</h3>
+
+                    <h2 id="totalAppointments">0</h2>
+
+                    <p>View and manage your appointments.</p>
+
+                </div>
+
+
+                <!-- Pending Card -->
+
+                <div class="doctor-stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+
+                    <h3>Pending Appointments</h3>
+
+                    <h2 id="pendingAppointments">0</h2>
+
+                    <p>Appointments waiting for confirmation.</p>
+
+                </div>
+
+
+                <!-- Completed Card -->
+
+                <div class="doctor-stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+
+                    <h3>Completed Appointments</h3>
+
+                    <h2 id="completedAppointments">0</h2>
+
+                    <p>Your completed appointments.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             APPOINTMENTS SECTION
+        ================================== -->
+
+        <section class="doctor-appointments" id="appointmentsSection">
+
+            <div class="section-heading">
+
+                <h2>My Appointments</h2>
+
+                <p>View patient details and manage appointment status.</p>
+
+            </div>
+
+
+            <!-- Search and Filter -->
+
+            <div class="appointment-controls">
+
+                <input
+                    type="text"
+                    id="appointmentSearch"
+                    placeholder="Search patient name or email..."
+                >
+
+                <select id="appointmentStatusFilter">
+
+                    <option value="">All Appointments</option>
+                    <option value="pending">Pending</option>
+                    <option value="confirmed">Confirmed</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+
+                </select>
+
+                <button id="appointmentSearchBtn" type="button">
+                    <i class="fas fa-search"></i> Search
+                </button>
+
+            </div>
+
+
+            <!-- Message -->
+
+            <p id="appointmentMessage"></p>
+
+
+            <!-- Appointments Table -->
+
+            <div class="table-container">
+
+                <table class="doctor-appointment-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>No.</th>
+                            <th>Patient Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Appointment Date</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Update Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="appointmentsList">
+
+                        <tr>
+                            <td colspan="8">Loading appointments...</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Pagination -->
+
+            <div class="appointment-pagination">
+
+                <button id="previousAppointmentPage" type="button">
+                    Previous
+                </button>
+
+                <span id="appointmentPageInfo">Page 1</span>
+
+                <button id="nextAppointmentPage" type="button">
+                    Next
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================
+             DOCTOR PROFILE SECTION
+        ================================== -->
+
+        <section class="doctor-profile" id="profileSection">
+
+            <h2>My Profile</h2>
+
+            <div class="doctor-profile-card">
+
+                <div class="profile-icon">
+                    <i class="fas fa-user-doctor"></i>
+                </div>
+
+                <h3 id="profileDoctorName">Doctor Name</h3>
+
+                <p>
+                    <strong>Email:</strong>
+                    <span id="profileDoctorEmail">-</span>
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    <span id="profileDoctorPhone">-</span>
+                </p>
+
+                <p>
+                    <strong>Specialization:</strong>
+                    <span id="doctorSpecialization">-</span>
+                </p>
+
+                <p>
+                    <strong>Qualification:</strong>
+                    <span id="doctorQualification">-</span>
+                </p>
+
+                <p>
+                    <strong>Experience:</strong>
+                    <span id="doctorExperience">-</span>
+                </p>
+
+                <p>
+                    <strong>Consultation Fee:</strong>
+                    ₹<span id="doctorFee">0</span>
+                </p>
+
+                <p>
+                    <strong>About:</strong>
+                    <span id="doctorAbout">-</span>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================================
+         FOOTER
+    ================================== -->
+
+    <footer class="footer">
+
+        <p>
+            &copy; 2026 CareNest. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/doctor-dashboard.js"></script>
+
+</body>
+
+</html>

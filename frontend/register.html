@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | CareNest</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-container">
+
+        <!-- Left Side -->
+        <div class="auth-left">
+
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+                CareNest<span>.</span>
+            </a>
+
+            <div class="auth-left-content">
+
+                <span class="hero-tag">JOIN CARENEST</span>
+
+                <h1>
+                    Start Your Journey
+                    Towards <span>Better Health.</span>
+                </h1>
+
+                <p>
+                    Create your account and experience
+                    smarter healthcare management.
+                </p>
+
+                <img
+                src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=800"
+                alt="Hospital Healthcare">
+
+            </div>
+
+            <p class="auth-footer-text">
+                Your Health, Our Priority.
+            </p>
+
+        </div>
+
+
+        <!-- Right Side -->
+        <div class="auth-right">
+
+            <div class="auth-form register-form">
+
+                <a href="index.html" class="back-home">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Home
+                </a>
+
+                <h2>Create Account</h2>
+
+                <p class="auth-subtitle">
+                    Join CareNest and manage your healthcare.
+                </p>
+
+
+                <form id="registerForm">
+
+                    <!-- Full Name -->
+                    <div class="form-group">
+
+                        <label>Full Name</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-user"></i>
+
+                            <input
+                            type="text"
+                            id="fullName"
+                            placeholder="Enter your full name"
+                            minlength="3"
+                            maxlength="55"
+                            required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                            type="email"
+                            id="registerEmail"
+                            placeholder="Enter your email"
+                            required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Phone -->
+                    <div class="form-group">
+
+                        <label>Phone Number</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input
+                            type="tel"
+                            id="phone"
+                            placeholder="Enter 10 digit phone number"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            required>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Role -->
+                    <div class="form-group">
+
+                        <label>Select Account Type</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-user-tag"></i>
+
+                            <select id="role" required>
+
+                                <option value="">Select your role</option>
+
+                                <option value="patient">Patient</option>
+
+                                <option value="doctor">Doctor</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label>Password</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create password"
+                            minlength="8"
+                            required>
+
+                            <button type="button"
+                            class="toggle-password"
+                            data-target="registerPassword">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                        <small class="input-hint">
+                            Minimum 8 characters.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+                    <div class="form-group">
+
+                        <label>Confirm Password</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm your password"
+                            required>
+
+                            <button type="button"
+                            class="toggle-password"
+                            data-target="confirmPassword">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Terms -->
+                    <div class="terms-box">
+
+                        <input type="checkbox" id="terms" required>
+
+                        <label for="terms">
+                            I agree to the Terms and Privacy Policy.
+                        </label>
+
+                    </div>
+
+
+                    <button type="submit" class="auth-submit">
+
+                        Create My Account
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                    <p id="registerMessage" class="form-message"></p>
+
+                </form>
+
+
+                <p class="auth-switch">
+                    Already have an account?
+                    <a href="login.html">Login Here</a>
+                </p>
+
+                <p class="auth-privacy">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Your information is protected.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

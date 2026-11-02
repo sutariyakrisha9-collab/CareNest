@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | CareNest</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="auth-body">
+
+    <div class="auth-container">
+
+        <!-- Left Side -->
+        <div class="auth-left">
+
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+                CareNest<span>.</span>
+            </a>
+
+            <div class="auth-left-content">
+
+                <span class="hero-tag">WELCOME BACK</span>
+
+                <h1>
+                    Your Health Journey
+                    <span>Continues Here.</span>
+                </h1>
+
+                <p>
+                    Login to manage your appointments,
+                    medical records and healthcare profile.
+                </p>
+
+                <img
+                src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800"
+                alt="Healthcare">
+
+            </div>
+
+            <p class="auth-footer-text">
+                Your Health, Our Priority.
+            </p>
+
+        </div>
+
+
+        <!-- Right Side -->
+        <div class="auth-right">
+
+            <div class="auth-form">
+
+                <a href="index.html" class="back-home">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Home
+                </a>
+
+                <h2>Welcome Back!</h2>
+
+                <p class="auth-subtitle">
+                    Please enter your details to login.
+                </p>
+
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+
+                        <label>Email Address</label>
+
+                        <div class="input-box">
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input
+                            type="email"
+                            id="loginEmail"
+                            placeholder="Enter your email"
+                            required>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Password</label>
+
+                        <div class="input-box">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Enter your password"
+                            required>
+
+                            <button type="button"
+                            class="toggle-password"
+                            data-target="loginPassword">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="auth-submit">
+                        Login to Account
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                    <p id="loginMessage" class="form-message"></p>
+
+                </form>
+
+
+                <div class="auth-divider">
+                    <span>Secure Healthcare Access</span>
+                </div>
+
+
+                <p class="auth-switch">
+                    Don't have an account?
+                    <a href="register.html">Create Account</a>
+                </p>
+
+                <p class="auth-privacy">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    Your information is protected.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>
+=

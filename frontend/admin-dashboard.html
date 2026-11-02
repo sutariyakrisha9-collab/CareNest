@@ -1,0 +1,922 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | CareNest</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin-dashboard.css">
+    <link rel="stylesheet" href="css/admin-doctors.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #173f3b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* NAVBAR */
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 7%;
+            background: #f5faf8;
+        }
+
+        .navbar .logo {
+            font-size: 30px;
+            font-weight: 800;
+            color: #078c7d;
+        }
+
+        .admin-navbar-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        #adminName {
+            font-size: 15px;
+            font-weight: 500;
+            color: #174c46;
+        }
+
+        #logoutBtn {
+            background: #078c7d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 11px 20px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #logoutBtn:hover {
+            background: #075e54;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(0, 100, 85, 0.15);
+        }
+
+        /* DASHBOARD */
+
+        .admin-dashboard-section {
+            max-width: 1200px;
+            margin: 65px auto;
+            padding: 0 25px;
+        }
+
+        .admin-dashboard-section h2 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #174c46;
+        }
+
+        .dashboard-subtitle {
+            color: #71817e;
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .admin-dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .admin-card {
+            display: block;
+            text-decoration: none;
+            color: #174c46;
+            background: white;
+            padding: 28px 25px;
+            border: 1px solid #e0ece9;
+            border-radius: 16px;
+            min-height: 175px;
+            transition: 0.3s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-6px);
+            border-color: #078c7d;
+            box-shadow: 0 10px 25px rgba(0, 100, 85, 0.10);
+        }
+
+        .admin-card i {
+            font-size: 25px;
+            color: #078c7d;
+            margin-bottom: 20px;
+        }
+
+        .admin-card h3 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .admin-card p {
+            font-size: 13px;
+            color: #74817f;
+            line-height: 1.7;
+        }
+
+        .admin-card span {
+            display: inline-block;
+            margin-top: 12px;
+            color: #078c7d;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* PLACEHOLDER SECTIONS */
+
+        .admin-placeholder-section {
+            max-width: 1200px;
+            margin: 35px auto;
+            padding: 35px 25px;
+            background: #f4f9f7;
+            border-radius: 12px;
+        }
+
+        .admin-placeholder-section h2 {
+            color: #174c46;
+            font-size: 24px;
+        }
+
+        .admin-placeholder-section p {
+            color: #71817e;
+            font-size: 14px;
+        }
+
+        /* APPOINTMENT MANAGEMENT */
+
+        .admin-appointments-section {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 35px 25px;
+        }
+
+        .appointment-heading {
+            margin-bottom: 25px;
+        }
+
+        .appointment-heading h2 {
+            color: #174c46;
+            font-size: 27px;
+            margin: 8px 0;
+        }
+
+        .appointment-heading p {
+            color: #71817e;
+            font-size: 14px;
+        }
+
+        .appointment-subtitle {
+            color: #078c7d;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .appointment-filters {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 22px;
+        }
+
+        .appointment-filters input,
+        .appointment-filters select {
+            padding: 12px 15px;
+            border: 1px solid #dce9e5;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 13px;
+            outline: none;
+            background: white;
+        }
+
+        .appointment-filters input {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .appointment-filters select {
+            min-width: 180px;
+        }
+
+        .appointment-filters input:focus,
+        .appointment-filters select:focus {
+            border-color: #078c7d;
+        }
+
+        .appointment-count {
+            margin-bottom: 15px;
+            color: #61736f;
+            font-size: 14px;
+        }
+
+        .appointment-table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border: 1px solid #e0ece9;
+            border-radius: 12px;
+        }
+
+        .appointment-table {
+            width: 100%;
+            min-width: 950px;
+            border-collapse: collapse;
+        }
+
+        .appointment-table th {
+            background: #eff7f4;
+            color: #174c46;
+            padding: 15px;
+            text-align: left;
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .appointment-table td {
+            padding: 15px;
+            border-top: 1px solid #edf2f0;
+            color: #526762;
+            font-size: 13px;
+        }
+
+        .appointment-table select {
+            padding: 8px;
+            border: 1px solid #dce9e5;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 12px;
+            background: white;
+        }
+
+        .appointment-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .appointment-pagination button {
+            background: #078c7d;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 7px;
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .appointment-pagination button:disabled {
+            background: #b8ccc7;
+            cursor: not-allowed;
+        }
+
+        #appointmentPageInfo {
+            font-size: 13px;
+            color: #61736f;
+        }
+
+        #appointmentMessage {
+            margin: 12px 0;
+            font-size: 13px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #f1f8f6;
+            color: #61736f;
+            font-size: 13px;
+            margin-top: 50px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+            .admin-dashboard-cards {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .navbar {
+                padding: 15px 4%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .admin-dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .navbar {
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .navbar .logo {
+                font-size: 23px;
+            }
+
+            .admin-navbar-right {
+                gap: 10px;
+            }
+
+            .admin-dashboard-section h2 {
+                font-size: 25px;
+            }
+
+            .appointment-filters {
+                flex-direction: column;
+            }
+
+            .appointment-filters input,
+            .appointment-filters select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            <i class="fas fa-heartbeat"></i>
+            CareNest Admin
+        </div>
+
+        <div class="admin-navbar-right">
+
+            <span id="adminName">Admin</span>
+
+            <button id="logoutBtn" type="button">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ADMIN DASHBOARD -->
+
+    <section class="admin-dashboard-section">
+
+        <h2>Admin Dashboard</h2>
+
+        <p class="dashboard-subtitle">
+            Manage your hospital system
+        </p>
+
+        <div class="admin-dashboard-cards">
+
+            <a href="#patientsSection" class="admin-card">
+                <i class="fas fa-user-injured"></i>
+                <h3>Manage Patients</h3>
+                <p>View and manage registered patients.</p>
+                <span>Manage Patients →</span>
+            </a>
+
+            <a href="#doctorManagementSection" class="admin-card">
+                <i class="fas fa-user-md"></i>
+                <h3>Manage Doctors</h3>
+                <p>Add and manage doctor accounts.</p>
+                <span>Manage Doctors →</span>
+            </a>
+
+            <a href="#appointmentsSection" class="admin-card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Appointments</h3>
+                <p>Monitor hospital appointments.</p>
+                <span>View Appointments →</span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ADD DOCTOR SECTION -->
+
+    <section id="doctorManagementSection" class="admin-doctor-section">
+
+        <div class="admin-section-heading">
+
+            <span class="admin-subtitle">DOCTOR MANAGEMENT</span>
+
+            <h2>Add New Doctor</h2>
+
+            <p>
+                Add a new doctor account and professional details to CareNest.
+            </p>
+
+        </div>
+
+        <div class="doctor-form-card">
+
+            <div class="doctor-form-header">
+
+                <div class="doctor-form-icon">
+                    <i class="fas fa-user-doctor"></i>
+                </div>
+
+                <div>
+                    <h3>Doctor Information</h3>
+                    <p>Fill in the details below to register a doctor.</p>
+                </div>
+
+            </div>
+
+            <form id="addDoctorForm">
+
+                <div class="form-heading">
+                    <i class="fas fa-user"></i>
+                    Personal Information
+                </div>
+
+                <div class="doctor-form-grid">
+
+                    <div class="form-group">
+                        <label for="doctorName">Doctor Name *</label>
+                        <input type="text" id="doctorName" placeholder="Enter doctor name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="doctorEmail">Email Address *</label>
+                        <input type="email" id="doctorEmail" placeholder="Enter email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="doctorPhone">Phone Number *</label>
+                        <input type="tel" id="doctorPhone" placeholder="10 digit phone number"
+                            pattern="[0-9]{10}" maxlength="10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="doctorPassword">Temporary Password *</label>
+                        <input type="password" id="doctorPassword" placeholder="Enter password"
+                            minlength="6" required>
+                    </div>
+
+                </div>
+
+                <div class="form-heading">
+                    <i class="fas fa-user-md"></i>
+                    Professional Information
+                </div>
+
+                <div class="doctor-form-grid">
+
+                    <div class="form-group">
+                        <label for="specialization">Specialization *</label>
+                        <input type="text" id="specialization" placeholder="e.g. Cardiologist" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qualification">Qualification *</label>
+                        <input type="text" id="qualification" placeholder="e.g. MBBS, MD" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Experience (Years) *</label>
+                        <input type="number" id="experience" placeholder="Enter experience"
+                            min="0" max="60" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="consultationFee">Consultation Fee (₹) *</label>
+                        <input type="number" id="consultationFee" placeholder="Enter consultation fee"
+                            min="0" required>
+                    </div>
+
+                </div>
+
+                <div class="form-heading">
+                    <i class="fas fa-file-alt"></i>
+                    About Doctor
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="about">Description</label>
+                    <textarea id="about" placeholder="Write a short description about the doctor..."
+                        rows="4"></textarea>
+                </div>
+
+                <div class="form-heading">
+                    <i class="fas fa-calendar-days"></i>
+                    Available Days
+                </div>
+
+                <div class="available-days-grid">
+
+                    <label class="day-option">
+                        <input type="checkbox" name="availableDays" value="Monday">
+                        <span>Monday</span>
+                    </label>
+
+                    <label class="day-option">
+                        <input type="checkbox" name="availableDays" value="Tuesday">
+                        <span>Tuesday</span>
+                    </label>
+
+                    <label class="day-option">
+                        <input type="checkbox" name="availableDays" value="Wednesday">
+                        <span>Wednesday</span>
+                    </label>
+
+                    <label class="day-option">
+                        <input type="checkbox" name="availableDays" value="Thursday">
+                        <span>Thursday</span>
+                    </label>
+
+                    <label class="day-option">
+                        <input type="checkbox" name="availableDays" value="Friday">
+                        <span>Friday</span>
+                    </label>
+
+                    <label class="day-option">
+                        <input type="checkbox" name="availableDays" value="Saturday">
+                        <span>Saturday</span>
+                    </label>
+
+                    <label class="day-option">
+                        <input type="checkbox" name="availableDays" value="Sunday">
+                        <span>Sunday</span>
+                    </label>
+
+                </div>
+
+                <div id="addDoctorMessage" class="doctor-form-message"
+                    role="status" aria-live="polite"></div>
+
+                <div class="doctor-form-actions">
+
+                    <button type="reset" class="doctor-reset-btn">
+                        <i class="fas fa-rotate-left"></i>
+                        Reset
+                    </button>
+
+                    <button type="submit" class="doctor-submit-btn">
+                        <i class="fas fa-user-plus"></i>
+                        Add Doctor
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ALL DOCTORS SECTION -->
+
+    <section id="allDoctorsSection" class="admin-doctors-section">
+
+        <div class="admin-section-heading">
+
+            <span class="admin-subtitle">DOCTOR DIRECTORY</span>
+
+            <h2>All Doctors</h2>
+
+            <p>
+                View and manage registered doctors in CareNest.
+            </p>
+
+        </div>
+
+        <div id="doctorsList" class="doctors-list">
+            <p>Loading doctors...</p>
+        </div>
+
+    </section>
+
+
+    <!-- EDIT DOCTOR MODAL -->
+
+    <div id="editDoctorModal" class="edit-doctor-modal">
+
+        <div class="edit-doctor-content">
+
+            <div class="edit-doctor-header">
+
+                <h2>Edit Doctor Details</h2>
+
+                <button type="button" id="closeEditModal">
+                    &times;
+                </button>
+
+            </div>
+
+            <form id="editDoctorForm">
+
+                <input type="hidden" id="editDoctorId">
+
+                <div class="edit-form-grid">
+
+                    <div class="form-group">
+                        <label>Doctor Name</label>
+                        <input type="text" id="editDoctorName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="editDoctorEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone</label>
+                        <input type="text" id="editDoctorPhone" maxlength="10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Specialization</label>
+                        <input type="text" id="editSpecialization" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Qualification</label>
+                        <input type="text" id="editQualification" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Experience (Years)</label>
+                        <input type="number" id="editExperience" min="0" max="60" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Consultation Fee (₹)</label>
+                        <input type="number" id="editConsultationFee" min="0" required>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>About Doctor</label>
+                    <textarea id="editAbout" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Available Days</label>
+
+                    <div class="available-days-grid">
+
+                        <label class="day-option">
+                            <input type="checkbox" name="editAvailableDays" value="Monday"> Monday
+                        </label>
+
+                        <label class="day-option">
+                            <input type="checkbox" name="editAvailableDays" value="Tuesday"> Tuesday
+                        </label>
+
+                        <label class="day-option">
+                            <input type="checkbox" name="editAvailableDays" value="Wednesday"> Wednesday
+                        </label>
+
+                        <label class="day-option">
+                            <input type="checkbox" name="editAvailableDays" value="Thursday"> Thursday
+                        </label>
+
+                        <label class="day-option">
+                            <input type="checkbox" name="editAvailableDays" value="Friday"> Friday
+                        </label>
+
+                        <label class="day-option">
+                            <input type="checkbox" name="editAvailableDays" value="Saturday"> Saturday
+                        </label>
+
+                        <label class="day-option">
+                            <input type="checkbox" name="editAvailableDays" value="Sunday"> Sunday
+                        </label>
+
+                    </div>
+                </div>
+
+                <p id="editDoctorMessage"></p>
+
+                <div class="edit-form-actions">
+
+                    <button type="button" id="cancelEditBtn">
+                        Cancel
+                    </button>
+
+                    <button type="submit" id="saveDoctorBtn">
+                        Update Doctor
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- PATIENT MANAGEMENT SECTION -->
+
+    <section id="patientsSection" class="admin-patients-section">
+
+        <div class="admin-section-heading">
+
+            <span class="admin-subtitle">PATIENT MANAGEMENT</span>
+
+            <h2>Registered Patients</h2>
+
+            <p>
+                View and manage all registered patients in CareNest.
+            </p>
+
+        </div>
+
+        <div class="patient-search-box">
+
+            <input type="text" id="patientSearch"
+                placeholder="Search patient by name or email...">
+
+            <button type="button" id="patientSearchBtn">
+                <i class="fas fa-search"></i>
+                Search
+            </button>
+
+        </div>
+
+        <div class="patient-count">
+            Total Patients: <strong id="totalPatients">0</strong>
+        </div>
+
+        <div id="patientsList" class="patients-list">
+            <p>Loading patients...</p>
+        </div>
+
+        <div class="patient-pagination">
+
+            <button type="button" id="previousPatientPage">
+                <i class="fas fa-chevron-left"></i>
+                Previous
+            </button>
+
+            <span id="patientPageInfo">Page 1</span>
+
+            <button type="button" id="nextPatientPage">
+                Next
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- APPOINTMENT MANAGEMENT SECTION -->
+
+    <section id="appointmentsSection" class="admin-appointments-section">
+
+        <div class="appointment-heading">
+
+            <span class="appointment-subtitle">APPOINTMENT MANAGEMENT</span>
+
+            <h2>
+                <i class="fas fa-calendar-check"></i>
+                All Appointments
+            </h2>
+
+            <p>
+                View patient appointments and manage appointment status.
+            </p>
+
+        </div>
+
+        <!-- SEARCH AND FILTER -->
+
+        <div class="appointment-filters">
+
+            <input
+                type="text"
+                id="appointmentSearch"
+                placeholder="Search by patient name or email..."
+            >
+
+            <select id="appointmentStatusFilter">
+
+                <option value="">All Appointments</option>
+                <option value="pending">Pending</option>
+                <option value="confirmed">Confirmed</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
+
+            </select>
+
+            <button type="button" id="appointmentSearchBtn">
+                <i class="fas fa-search"></i>
+                Search
+            </button>
+
+        </div>
+
+        <div class="appointment-count">
+            Total Appointments:
+            <strong id="totalAppointments">0</strong>
+        </div>
+
+        <div id="appointmentMessage" role="status" aria-live="polite"></div>
+
+        <!-- APPOINTMENT TABLE -->
+
+        <div class="appointment-table-wrapper">
+
+            <table class="appointment-table">
+
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Patient</th>
+                        <th>Patient Email</th>
+                        <th>Doctor</th>
+                        <th>Appointment Date</th>
+                        <th>Reason</th>
+                        <th>Status</th>
+                        <th>Update Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="appointmentsList">
+
+                    <tr>
+                        <td colspan="8">Loading appointments...</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- PAGINATION -->
+
+        <div class="appointment-pagination">
+
+            <button type="button" id="previousAppointmentPage">
+                <i class="fas fa-chevron-left"></i>
+                Previous
+            </button>
+
+            <span id="appointmentPageInfo">Page 1</span>
+
+            <button type="button" id="nextAppointmentPage">
+                Next
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>© 2026 CareNest. All Rights Reserved.</p>
+    </footer>
+
+
+    <!-- JAVASCRIPT FILES -->
+
+    <script src="js/admin-dashboard.js"></script>
+    <script src="js/admin-doctors.js"></script>
+    <script src="js/patient-management.js"></script>
+    <script src="js/admin-appointments.js"></script>
+
+</body>
+
+</html>

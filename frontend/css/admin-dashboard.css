@@ -1,0 +1,653 @@
+
+/* =====================================
+   ADMIN DOCTOR FORM SECTION
+===================================== */
+
+.admin-doctor-section {
+    padding: 65px 8%;
+    background: #f4f8f7;
+    min-height: 100vh;
+}
+
+.admin-section-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.admin-subtitle {
+    color: #159b83;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.admin-section-heading h2 {
+    font-size: 32px;
+    color: #183b35;
+    margin: 10px 0;
+}
+
+.admin-section-heading p {
+    color: #777;
+    font-size: 15px;
+}
+
+
+/* =====================================
+   FORM CARD
+===================================== */
+
+.doctor-form-card {
+    max-width: 950px;
+    margin: auto;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+}
+
+.doctor-form-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e8eeee;
+}
+
+.doctor-form-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    background: #e3f7f2;
+    color: #159b83;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+}
+
+.doctor-form-header h3 {
+    color: #183b35;
+    margin: 0 0 6px;
+    font-size: 21px;
+}
+
+.doctor-form-header p {
+    color: #888;
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* =====================================
+   FORM HEADINGS
+===================================== */
+
+.form-heading {
+    color: #159b83;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 30px 0 18px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8eeee;
+}
+
+.form-heading i {
+    margin-right: 8px;
+}
+
+
+/* =====================================
+   FORM GRID
+===================================== */
+
+.doctor-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    color: #344b46;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.doctor-form-card input:not([type="checkbox"]),
+.doctor-form-card textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid #dce6e3;
+    border-radius: 8px;
+    outline: none;
+    background: #fbfdfc;
+    color: #263d38;
+    font-size: 14px;
+    font-family: inherit;
+    transition: 0.3s;
+}
+
+.doctor-form-card input:focus,
+.doctor-form-card textarea:focus {
+    border-color: #159b83;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(21, 155, 131, 0.10);
+}
+
+.doctor-form-card input::placeholder,
+.doctor-form-card textarea::placeholder {
+    color: #a0aaa7;
+}
+
+.doctor-form-card textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+
+/* =====================================
+   AVAILABLE DAYS
+===================================== */
+
+.available-days-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.day-option {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px;
+    border: 1px solid #dce6e3;
+    border-radius: 8px;
+    background: #fbfdfc;
+    cursor: pointer;
+    color: #344b46;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.day-option:hover {
+    border-color: #159b83;
+    background: #effaf7;
+}
+
+.day-option input {
+    accent-color: #159b83;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+
+/* =====================================
+   FORM MESSAGE
+===================================== */
+
+.doctor-form-message {
+    margin: 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =====================================
+   FORM BUTTONS
+===================================== */
+
+.doctor-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e8eeee;
+}
+
+.doctor-reset-btn,
+.doctor-submit-btn {
+    padding: 13px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.doctor-reset-btn {
+    background: #edf1f0;
+    color: #52635e;
+}
+
+.doctor-reset-btn:hover {
+    background: #dce5e2;
+}
+
+.doctor-submit-btn {
+    background: #159b83;
+    color: #ffffff;
+}
+
+.doctor-submit-btn:hover {
+    background: #107d6a;
+    transform: translateY(-2px);
+}
+
+.doctor-submit-btn i,
+.doctor-reset-btn i {
+    margin-right: 7px;
+}
+
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 768px) {
+
+    .admin-doctor-section {
+        padding: 40px 5%;
+    }
+
+    .doctor-form-card {
+        padding: 22px;
+    }
+
+    .doctor-form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .available-days-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-section-heading h2 {
+        font-size: 26px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .doctor-form-actions {
+        flex-direction: column;
+    }
+
+    .doctor-reset-btn,
+    .doctor-submit-btn {
+        width: 100%;
+    }
+
+    .doctor-form-card {
+        padding: 17px;
+    }
+
+}
+
+/* =================================
+   ADMIN DASHBOARD FONT & CARDS
+================================= */
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #173f3b;
+}
+
+.admin-dashboard-section {
+    max-width: 1200px;
+    margin: 70px auto;
+    padding: 0 25px;
+}
+
+.admin-dashboard-section h2 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #174c46;
+    margin-bottom: 5px;
+}
+
+.dashboard-subtitle {
+    font-size: 15px;
+    color: #71817e;
+    margin-bottom: 25px;
+}
+
+.admin-dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.admin-card {
+    display: block;
+    text-decoration: none;
+    color: #174c46;
+    background: #ffffff;
+    padding: 28px 25px;
+    border: 1px solid #e0ece9;
+    border-radius: 16px;
+    min-height: 165px;
+    transition: 0.3s ease;
+}
+
+.admin-card i {
+    font-size: 25px;
+    color: #078c7d;
+    margin-bottom: 22px;
+}
+
+.admin-card h3 {
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.admin-card p {
+    font-size: 14px;
+    color: #74817f;
+    line-height: 1.6;
+}
+
+.admin-card span {
+    display: inline-block;
+    margin-top: 12px;
+    color: #078c7d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.admin-card:hover {
+    transform: translateY(-6px);
+    border-color: #078c7d;
+    box-shadow: 0 10px 25px rgba(0, 100, 85, 0.10);
+}
+
+/* =================================
+   NAVBAR & LOGOUT BUTTON
+================================= */
+
+.admin-navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+#adminName {
+    font-size: 15px;
+    font-weight: 500;
+    color: #174c46;
+}
+
+#logoutBtn {
+    background: #078c7d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#logoutBtn:hover {
+    background: #075e54;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 100, 85, 0.18);
+}
+
+/* =================================
+   PLACEHOLDER SECTIONS
+================================= */
+
+.admin-placeholder-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 35px 25px;
+    background: #f4f9f7;
+    border-radius: 12px;
+}
+
+.admin-placeholder-section h2 {
+    color: #174c46;
+    font-size: 24px;
+}
+
+.admin-placeholder-section p {
+    color: #71817e;
+    font-size: 14px;
+}
+
+/* Smooth scrolling */
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+    .admin-dashboard-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-dashboard-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-dashboard-section h2 {
+        font-size: 25px;
+    }
+
+    .admin-navbar-right {
+        gap: 8px;
+    }
+}
+
+/* =================================
+   PATIENT MANAGEMENT
+================================= */
+
+.admin-patients-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 35px 25px;
+    background: #f7faf9;
+    border-radius: 15px;
+}
+
+.patient-search-box {
+    display: flex;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.patient-search-box input {
+    flex: 1;
+    padding: 14px 16px;
+    border: 1px solid #dce8e5;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+}
+
+.patient-search-box input:focus {
+    border-color: #078c7d;
+}
+
+.patient-search-box button {
+    padding: 12px 22px;
+    background: #078c7d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.patient-search-box button:hover {
+    background: #075e54;
+}
+
+.patient-count {
+    margin: 20px 0;
+    color: #526b66;
+    font-size: 15px;
+}
+
+.patients-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.patient-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px;
+    background: white;
+    border: 1px solid #e0ece9;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.patient-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(0, 100, 85, 0.08);
+}
+
+.patient-card-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e6f5f1;
+    color: #078c7d;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.patient-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.patient-card-info h3 {
+    font-size: 17px;
+    color: #174c46;
+    margin-bottom: 8px;
+}
+
+.patient-card-info p {
+    font-size: 13px;
+    color: #71817e;
+    margin: 5px 0;
+    overflow-wrap: anywhere;
+}
+
+.patient-status {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 5px 12px;
+    background: #e5f7ec;
+    color: #168348;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.patient-card-number {
+    color: #078c7d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.patient-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.patient-pagination button {
+    padding: 10px 16px;
+    background: #078c7d;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.patient-pagination button:disabled {
+    background: #b8c8c4;
+    cursor: not-allowed;
+}
+
+.patient-pagination span {
+    font-size: 14px;
+    color: #174c46;
+    font-weight: 600;
+}
+
+.no-patients {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border-radius: 12px;
+}
+
+.no-patients i {
+    font-size: 35px;
+    color: #078c7d;
+}
+
+.patient-error {
+    color: #c0392b;
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+
+    .patients-list {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-search-box {
+        flex-direction: column;
+    }
+
+    .patient-pagination {
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+}

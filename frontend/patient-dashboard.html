@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CareNest | Patient Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        .dashboard-section {
+            margin-top: 50px;
+            padding: 25px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .dashboard-section h2 {
+            margin-bottom: 15px;
+        }
+
+        .appointment-form {
+            max-width: 650px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .book-btn {
+            padding: 12px 25px;
+            background: #159b85;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .book-btn:hover {
+            background: #117c6b;
+        }
+
+        .form-message {
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .appointment-card,
+        .record-card {
+            padding: 18px;
+            margin: 15px 0;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-heart-pulse"></i>
+                CareNest<span>.</span>
+            </a>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="patient-dashboard.html" class="active">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#book-appointment">
+                        Book Appointment
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#appointments">
+                        Appointments
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#records">
+                        Medical Records
+                    </a>
+                </li>
+            </ul>
+
+            <div class="nav-buttons">
+                <span id="patientName">Patient</span>
+                <button id="logoutBtn" class="login-btn">Logout</button>
+            </div>
+
+        </nav>
+    </header>
+
+
+    <main style="padding: 120px 7% 50px;">
+
+        <!-- Welcome Section -->
+        <section>
+
+            <span>PATIENT PORTAL</span>
+
+            <h1>
+                Welcome,
+                <span id="welcomeName">Patient</span>!
+            </h1>
+
+            <p>
+                Manage your healthcare appointments and medical records.
+            </p>
+
+        </section>
+
+
+        <!-- Dashboard Statistics -->
+        <section style="margin-top: 40px;">
+
+            <h2>My Dashboard</h2>
+
+            <div class="service-container">
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+
+                    <h3>My Appointments</h3>
+
+                    <h2 id="appointmentCount">0</h2>
+
+                    <p>View your appointments.</p>
+
+                </div>
+
+
+                <div class="service-card">
+
+                    <div class="service-icon">
+                        <i class="fa-solid fa-file-medical"></i>
+                    </div>
+
+                    <h3>Medical Records</h3>
+
+                    <h2 id="recordCount">0</h2>
+
+                    <p>Manage your medical reports.</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Book Appointment Section -->
+        <section id="book-appointment" class="dashboard-section">
+
+            <h2>
+                <i class="fa-solid fa-calendar-plus"></i>
+                Book an Appointment
+            </h2>
+
+            <p>Select a doctor and book your appointment.</p>
+
+            <form id="appointmentForm" class="appointment-form">
+
+                <div class="form-group">
+
+                    <label for="doctor">Select Doctor</label>
+
+                    <select id="doctor" required>
+
+                        <option value="">
+                            Loading doctors...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="appointmentDate">
+                        Appointment Date & Time
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="appointmentDate"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="reason">
+                        Reason for Appointment
+                    </label>
+
+                    <textarea
+                        id="reason"
+                        placeholder="Enter your reason for appointment"
+                        maxlength="500"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button type="submit" class="book-btn">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+                    Book Appointment
+
+                </button>
+
+                <p
+                    id="bookAppointmentMessage"
+                    class="form-message"
+                ></p>
+
+            </form>
+
+        </section>
+
+
+        <!-- My Appointments Section -->
+        <section id="appointments" class="dashboard-section">
+
+            <h2>
+                <i class="fa-solid fa-calendar-check"></i>
+                My Appointments
+            </h2>
+
+            <div id="appointmentMessage">
+                Your appointments will appear here.
+            </div>
+
+        </section>
+
+
+        <!-- Medical Records Section -->
+        <!-- Medical Records Section -->
+<section id="records" class="dashboard-section">
+
+    <h2>
+        <i class="fa-solid fa-file-medical"></i>
+        My Medical Records
+    </h2>
+
+    <p>Upload and manage your medical reports.</p>
+
+    <form id="recordUploadForm" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="recordTitle">Record Title</label>
+
+            <input
+                type="text"
+                id="recordTitle"
+                name="title"
+                placeholder="Enter report title"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="recordDescription">Description</label>
+
+            <textarea
+                id="recordDescription"
+                name="description"
+                placeholder="Enter report description"
+            ></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="recordFile">Select Medical Report</label>
+
+            <input
+                type="file"
+                id="recordFile"
+                name="file"
+                accept=".pdf,.jpg,.jpeg,.png"
+                required
+            >
+        </div>
+
+        <button type="submit" class="book-btn">
+            <i class="fa-solid fa-upload"></i>
+            Upload Record
+        </button>
+
+        <p id="recordUploadMessage" class="form-message"></p>
+
+    </form>
+
+    <hr>
+
+    <h3>My Uploaded Reports</h3>
+
+    <div id="recordsList">
+        Your uploaded medical reports will appear here.
+    </div>
+
+</section>
+    <!-- Footer -->
+    <footer>
+
+        <div class="copyright">
+            © 2026 CareNest. All Rights Reserved.
+        </div>
+
+    </footer>
+
+
+    <!-- JavaScript Files -->
+    <script src="js/appointment.js"></script>
+    <script src="js/patient-dashboard.js"></script>
+    <script src="js/medical-record.js"></script>
+</body>
+
+</html>

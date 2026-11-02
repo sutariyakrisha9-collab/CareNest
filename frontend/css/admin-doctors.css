@@ -1,0 +1,190 @@
+.admin-doctors-section {
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 1200px;
+}
+
+.admin-doctors-section h2 {
+    font-size: 26px;
+    color: #174c46;
+    margin-bottom: 8px;
+}
+
+.admin-section-heading p {
+    color: #777;
+    margin-bottom: 25px;
+}
+
+.doctors-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.doctor-card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #e5eeee;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.doctor-card h3 {
+    color: #176b60;
+    margin-bottom: 15px;
+}
+
+.doctor-card p {
+    color: #555;
+    margin: 9px 0;
+    font-size: 14px;
+}
+
+.doctor-status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: #d9f7e8;
+    color: #16834a;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+.doctor-fee {
+    font-weight: bold;
+    color: #176b60;
+}
+
+/* Edit Doctor Modal */
+
+.edit-doctor-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.edit-doctor-content {
+    background: #fff;
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 28px;
+    border-radius: 14px;
+}
+
+.edit-doctor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.edit-doctor-header h2 {
+    color: #176b60;
+}
+
+#closeEditModal {
+    border: none;
+    background: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.edit-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.edit-doctor-content .form-group {
+    margin-bottom: 18px;
+}
+
+.edit-doctor-content input:not([type="checkbox"]),
+.edit-doctor-content textarea {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #d5e0df;
+    border-radius: 7px;
+    margin-top: 7px;
+    box-sizing: border-box;
+}
+
+.edit-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.edit-form-actions button {
+    padding: 11px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+#saveDoctorBtn {
+    background: #176b60;
+    color: white;
+}
+
+#cancelEditBtn {
+    background: #e8eeee;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .edit-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-doctor-content {
+        padding: 18px;
+    }
+}
+
+/* Doctor Card Buttons */
+
+.doctor-card-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.edit-doctor-btn,
+.delete-doctor-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.edit-doctor-btn {
+    background: #176b60;
+    color: white;
+}
+
+.delete-doctor-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.edit-doctor-btn:hover {
+    background: #105147;
+}
+
+.delete-doctor-btn:hover {
+    background: #b52a37;
+}
+
+.edit-doctor-btn:disabled,
+#saveDoctorBtn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
