@@ -4,7 +4,7 @@
 // ======================================
 
 // Backend API URL
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://carenest-backend-xbuo.onrender.com/api";
 
 // Get patient token
 const token = sessionStorage.getItem("token");
